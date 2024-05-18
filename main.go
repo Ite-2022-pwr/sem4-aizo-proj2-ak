@@ -52,4 +52,6 @@ func main() {
   fmt.Println(G.LookupEdge(0, 5))
 
   fmt.Println(G.GetNeighbors(2))
+
+  fmt.Println(graph.Dijkstra(G, 0))
 }

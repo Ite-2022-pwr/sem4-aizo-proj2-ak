@@ -48,6 +48,14 @@ func NewIncidenceMatrix(vertices int, edges []Edge) (*IncidenceMatrix, error) {
 
 }
 
+func (im *IncidenceMatrix) GetVerticesNumber() int {
+  return im.Vertices
+}
+
+func (im *IncidenceMatrix) GetEdgesNumber() int {
+  return im.Edges
+}
+
 func (im *IncidenceMatrix) LookupEdge(source, destination int) (bool, Edge, error) {
   if source < 0 || destination < 0 || source >= im.Vertices || destination >= im.Vertices {
     return false, Edge{}, fmt.Errorf("Invalid source or destination (%v, %v)", source, destination)

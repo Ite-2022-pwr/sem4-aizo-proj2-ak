@@ -40,6 +40,14 @@ func NewAdjacencyList(vertices int, edges []Edge) (*AdjacencyList, error) {
   return al, nil
 }
 
+func (al *AdjacencyList) GetVerticesNumber() int {
+  return al.Vertices
+}
+
+func (al *AdjacencyList) GetEdgesNumber() int {
+  return al.Edges
+}
+
 func (al *AdjacencyList) LookupEdge(source, destination int) (bool, Edge, error) {
   if source < 0 || destination < 0 || source >= al.Vertices || destination >= al.Vertices {
     return false, Edge{}, fmt.Errorf("Invalid source or destination (%v, %v)", source, destination)
