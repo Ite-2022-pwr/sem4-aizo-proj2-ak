@@ -8,4 +8,5 @@ type Graph interface {
   ToString() string
   LookupEdge(source, destination int) (bool, Edge, error)
   GetNeighbors(vertex int) ([]Edge, error)
+  GetEdges() []Edge
 }

@@ -19,14 +19,14 @@ func minDistance(distances []int, visited []bool) int {
   return minDistanceVertex
 }
 
-func Dijkstra(G Graph, startVertex int) ([]int, []int, error) {
+func Dijkstra(G Graph, startVertex int) (distances []int, parents []int, err error) {
   if startVertex < 0 || startVertex >= G.GetVerticesNumber() {
     return nil, nil, fmt.Errorf("Invalid start vertex number: %v", startVertex)
   }
 
-  distances := make([]int, G.GetVerticesNumber())
+  distances = make([]int, G.GetVerticesNumber())
   visited := make([]bool, G.GetVerticesNumber())
-  parents := make([]int, G.GetVerticesNumber())
+  parents = make([]int, G.GetVerticesNumber())
 
   for i := 0; i < G.GetVerticesNumber(); i++ {
     distances[i] = math.MaxInt

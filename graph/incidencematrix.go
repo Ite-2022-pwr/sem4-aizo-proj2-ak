@@ -88,6 +88,24 @@ func (im *IncidenceMatrix) GetNeighbors(vertex int) ([]Edge, error) {
   return neighbors, nil
 }
 
+func (im *IncidenceMatrix) GetEdges() []Edge {
+  edges := make([]Edge, im.Edges)
+
+  for e := 0; e < im.Edges; e++ {
+    src, dst := -1, -1
+    for v := 0; v < im.Vertices; v++ {
+      if im.Matrix[v][e] == 1 {
+        src = v
+      } else if im.Matrix[v][e] == -1 {
+        dst = v
+      }
+    }
+    edges[e] = Edge{Source: src, Destination: dst, Weight: im.Weights[e]}
+  }
+
+  return edges
+}
+
 func (im *IncidenceMatrix) ToString() string {
   var output []string
   for i := 0; i < im.Vertices; i++ {

@@ -73,6 +73,21 @@ func (al *AdjacencyList) GetNeighbors(vertex int) ([]Edge, error) {
   return neighbors, nil
 }
 
+func (al *AdjacencyList) GetEdges() []Edge {
+  edges := make([]Edge, al.Edges)
+
+  edgeIdx := 0
+  for v := 0; v < al.Vertices; v++ {
+    edgeCount := len(al.List[v])
+    for e := 0; e < edgeCount && edgeIdx < al.Edges; e++ {
+      edges[edgeIdx] = al.List[v][e]
+      edgeIdx++
+    }
+  }
+
+  return edges
+}
+
 func (al *AdjacencyList) ToString() string {
   var output []string
   for i := 0; i < al.Vertices; i++ {
