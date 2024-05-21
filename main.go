@@ -29,18 +29,19 @@ func main() {
     log.Fatal(err)
   }
 
-  fmt.Println(G.ToString())
-  fmt.Println()
+  // fmt.Println(G.ToString())
+  // fmt.Println()
 
   // fmt.Println(G.LookupEdge(0, 4))
   // fmt.Println(G.LookupEdge(0, 5))
 
   // fmt.Println(G.GetNeighbors(2))
 
-  fmt.Println(G.GetEdges())
+  // fmt.Println(G.GetEdges())
 
   fmt.Println(graph.Dijkstra(G, 0))
   fmt.Println(graph.BellmanFord(G, 0))
+  fmt.Println(graph.Prim(G, 0))
 
   fmt.Println()
 
@@ -50,16 +51,17 @@ func main() {
     log.Fatal(err)
   }
 
-  fmt.Println(G.ToString())
-  fmt.Println()
+  // fmt.Println(G.ToString())
+  // fmt.Println()
 
   // fmt.Println(G.LookupEdge(0, 4))
   // fmt.Println(G.LookupEdge(0, 5))
 
   // fmt.Println(G.GetNeighbors(2))
 
-  fmt.Println(G.GetEdges())
+  // fmt.Println(G.GetEdges())
 
   fmt.Println(graph.Dijkstra(G, 0))
   fmt.Println(graph.BellmanFord(G, 0))
+  fmt.Println(graph.Prim(G, 0))
 }

@@ -7,8 +7,15 @@ Prowadzący: [dr inż. Zbigniew Buchalski](https://wit.pwr.edu.pl/wydzial/strukt
 
 ## Opis projektu
 
-Opis projektu znajduje się na [tej stronie](http://dariusz.banasiak.staff.iiar.pwr.wroc.pl/azo/AZO_lista2.pdf).
+Pełny opis projektu znajduje się na [tej stronie](http://dariusz.banasiak.staff.iiar.pwr.wroc.pl/azo/AZO_lista2.pdf).
 
+Należało zaimplementować oraz dokonać pomiaru czasu działania wybranych algorytmów grafowych rozwiązujących następujące problemy:
+- wyznaczanie minimalnego drzewa rozpinającego (MST) - algorytm Prima oraz algorytm Kruskala,
+- wyznaczanie najkrótszej ścieżki w grafie – algorytm Dijkstry oraz algorytm Forda-Bellmana,
+
+Algorytmy te należy zaimplementować dla obu poniższych reprezentacji grafu w pamięci komputera:
+- reprezentacja macierzowa (macierz incydencji),
+- reprezentacja listowa (lista następników/poprzedników). 
 
 Projekt, za zgodą prowadzącego, został zaimplementowany w języku programowania [Go](https://go.dev/).
 
