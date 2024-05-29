@@ -48,7 +48,7 @@ func (al *AdjacencyList) GetEdgesNumber() int {
   return al.Edges
 }
 
-func (al *AdjacencyList) LookupEdge(source, destination int) (bool, Edge, error) {
+func (al *AdjacencyList) LookupEdge(source, destination int, isDirected bool) (bool, Edge, error) {
   if source < 0 || destination < 0 || source >= al.Vertices || destination >= al.Vertices {
     return false, Edge{}, fmt.Errorf("Invalid source or destination (%v, %v)", source, destination)
   }
@@ -56,6 +56,14 @@ func (al *AdjacencyList) LookupEdge(source, destination int) (bool, Edge, error)
   for i := 0; i < len(al.List[source]); i++ {
     if al.List[source][i].Destination == destination {
       return true, al.List[source][i], nil
+    }
+  }
+
+  if !isDirected {
+    for i := 0; i < len(al.List[destination]); i++ {
+      if al.List[destination][i].Destination == source {
+        return true, al.List[destination][i], nil
+      }
     }
   }
 

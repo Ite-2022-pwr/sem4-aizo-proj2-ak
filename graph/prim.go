@@ -44,7 +44,7 @@ func Prim(G Graph, startVertex int) (mstWeight int, parents []int, err error) {
         continue
       }
 
-      exists, edge, err := G.LookupEdge(u, v)
+      exists, edge, err := G.LookupEdge(u, v, false)
 
       if err != nil {
         return 0, nil, err

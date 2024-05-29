@@ -6,7 +6,7 @@ type Graph interface {
   GetVerticesNumber() int
   GetEdgesNumber() int
   ToString() string
-  LookupEdge(source, destination int) (bool, Edge, error)
+  LookupEdge(source, destination int, isDirected bool) (bool, Edge, error)
   GetNeighbors(vertex int) ([]Edge, error)
   GetEdges() []Edge
 }

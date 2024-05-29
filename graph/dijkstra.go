@@ -44,7 +44,7 @@ func Dijkstra(G Graph, startVertex int) (distances []int, parents []int, err err
         continue
       }
 
-      exists, edge, err := G.LookupEdge(u, v)
+      exists, edge, err := G.LookupEdge(u, v, true)
       if err != nil {
         return nil, nil, err
       }

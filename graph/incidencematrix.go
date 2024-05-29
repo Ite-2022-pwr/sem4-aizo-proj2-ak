@@ -56,13 +56,15 @@ func (im *IncidenceMatrix) GetEdgesNumber() int {
   return im.Edges
 }
 
-func (im *IncidenceMatrix) LookupEdge(source, destination int) (bool, Edge, error) {
+func (im *IncidenceMatrix) LookupEdge(source, destination int, isDirected bool) (bool, Edge, error) {
   if source < 0 || destination < 0 || source >= im.Vertices || destination >= im.Vertices {
     return false, Edge{}, fmt.Errorf("Invalid source or destination (%v, %v)", source, destination)
   }
 
   for i := 0; i < im.Edges; i++ {
     if im.Matrix[source][i] == 1 && im.Matrix[destination][i] == -1 {
+      return true, Edge{Source: source, Destination: destination, Weight: im.Weights[i]}, nil
+    } else if !isDirected && im.Matrix[source][i] == -1 && im.Matrix[destination][i] == 1 {
       return true, Edge{Source: source, Destination: destination, Weight: im.Weights[i]}, nil
     }
   }
@@ -80,7 +82,7 @@ func (im *IncidenceMatrix) GetNeighbors(vertex int) ([]Edge, error) {
     if vertex == i {
       continue
     }
-    if exists, edge, err := im.LookupEdge(vertex, i); err == nil && exists {
+    if exists, edge, err := im.LookupEdge(vertex, i, true); err == nil && exists {
       neighbors = append(neighbors, edge)
     }
   }

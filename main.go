@@ -42,6 +42,7 @@ func main() {
   fmt.Println(graph.Dijkstra(G, 0))
   fmt.Println(graph.BellmanFord(G, 0))
   fmt.Println(graph.Prim(G, 0))
+  fmt.Println(graph.Kruskal(G))
 
   fmt.Println()
 
@@ -64,4 +65,5 @@ func main() {
   fmt.Println(graph.Dijkstra(G, 0))
   fmt.Println(graph.BellmanFord(G, 0))
   fmt.Println(graph.Prim(G, 0))
+  fmt.Println(graph.Kruskal(G))
 }
