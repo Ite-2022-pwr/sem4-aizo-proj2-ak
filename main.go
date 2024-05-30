@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/generator"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
@@ -66,4 +67,40 @@ func main() {
   fmt.Println(graph.BellmanFord(G, 0))
   fmt.Println(graph.Prim(G, 0))
   fmt.Println(graph.Kruskal(G))
+
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+
+  fmt.Println("Generating graphs")
+
+  V := 10
+
+  edges, err = generator.GenerateGraph(V, 10, 45)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+  al, err := graph.NewAdjacencyList(V, edges)
+  
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+  fmt.Println(al.ToString())
+  fmt.Println()
+
+  im, err := graph.NewIncidenceMatrix(V, edges)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+  fmt.Println(im.ToString())
 }
