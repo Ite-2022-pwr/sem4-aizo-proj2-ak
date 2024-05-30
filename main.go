@@ -144,4 +144,9 @@ func main() {
 
   graphAnal.Dijstkra(0, V - 1)
   graphAnal.BellmanFord(0, V - 1)
+
+  fmt.Println()
+
+  graphAnal.Prim()
+  graphAnal.Kruskal()
 }
