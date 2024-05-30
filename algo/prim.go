@@ -1,8 +1,9 @@
-package graph
+package algo
 
 import (
-	"fmt"
 	"math"
+
+	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
 func findMinKey(keys []int, mstSet []bool) int {
@@ -18,13 +19,9 @@ func findMinKey(keys []int, mstSet []bool) int {
   return minKeyIdx
 }
 
-func Prim(G Graph, startVertex int) (mstWeight int, parents []int, err error) {
-  if startVertex < 0 || startVertex >= G.GetVerticesNumber() {
-    return 0, nil, fmt.Errorf("Invalid start vertex")
-  }
+func Prim(G graph.Graph) (mstWeight int, mstEdges []graph.Edge, err error) {
 
-  mstWeight = 0
-  parents = make([]int, G.GetVerticesNumber())
+  parents := make([]int, G.GetVerticesNumber())
   mstSet := make([]bool, G.GetVerticesNumber())
   keys := make([]int, G.GetVerticesNumber())
 
@@ -32,7 +29,7 @@ func Prim(G Graph, startVertex int) (mstWeight int, parents []int, err error) {
     keys[i] = math.MaxInt
   }
 
-  keys[startVertex] = 0
+  keys[0] = 0
 
   for i := 0; i < G.GetVerticesNumber(); i++ {
     u := findMinKey(keys, mstSet)
@@ -56,14 +53,22 @@ func Prim(G Graph, startVertex int) (mstWeight int, parents []int, err error) {
 
       if edge.Weight < keys[v] {
         parents[v] = u
-        if keys[v] != math.MaxInt {
-          mstWeight -= keys[v]
-        }
         keys[v] = edge.Weight
-        mstWeight += edge.Weight
       }
     }
   }
 
-  return mstWeight, parents, nil
+  mstWeight = 0
+  for _, v := range keys {
+    mstWeight += v
+  }
+
+  for v, u := range parents {
+    if v == u {
+      continue
+    }
+    mstEdges = append(mstEdges, graph.Edge{Source: u, Destination: v, Weight: keys[v]})
+  }
+
+  return mstWeight, mstEdges, nil
 }

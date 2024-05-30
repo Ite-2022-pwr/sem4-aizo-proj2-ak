@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/algo"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/generator"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
@@ -40,10 +41,10 @@ func main() {
 
   // fmt.Println(G.GetEdges())
 
-  fmt.Println(graph.Dijkstra(G, 0))
-  fmt.Println(graph.BellmanFord(G, 0))
-  fmt.Println(graph.Prim(G, 0))
-  fmt.Println(graph.Kruskal(G))
+  fmt.Println(algo.Dijkstra(G, 0))
+  fmt.Println(algo.BellmanFord(G, 0))
+  fmt.Println(algo.Prim(G))
+  fmt.Println(algo.Kruskal(G))
 
   fmt.Println()
 
@@ -63,10 +64,10 @@ func main() {
 
   // fmt.Println(G.GetEdges())
 
-  fmt.Println(graph.Dijkstra(G, 0))
-  fmt.Println(graph.BellmanFord(G, 0))
-  fmt.Println(graph.Prim(G, 0))
-  fmt.Println(graph.Kruskal(G))
+  fmt.Println(algo.Dijkstra(G, 0))
+  fmt.Println(algo.BellmanFord(G, 0))
+  fmt.Println(algo.Prim(G))
+  fmt.Println(algo.Kruskal(G))
 
   fmt.Println()
   fmt.Println()
@@ -77,8 +78,9 @@ func main() {
   fmt.Println("Generating graphs")
 
   V := 10
+  density := 45
 
-  edges, err = generator.GenerateGraph(V, 10, 45)
+  edges, err = generator.GenerateGraph(V, 10, density)
 
   if err != nil {
     fmt.Println(err)
@@ -103,4 +105,25 @@ func main() {
   }
 
   fmt.Println(im.ToString())
+  fmt.Println()
+
+  fmt.Println("Dijkstra")
+  fmt.Println(algo.Dijkstra(al, 0))
+  fmt.Println(algo.Dijkstra(im, 0))
+  fmt.Println()
+
+  fmt.Println("BellmanFord")
+  fmt.Println(algo.BellmanFord(al, 0))
+  fmt.Println(algo.BellmanFord(im, 0))
+  fmt.Println()
+
+  fmt.Println("Prim")
+  fmt.Println(algo.Prim(al))
+  fmt.Println(algo.Prim(im))
+  fmt.Println()
+
+  fmt.Println("Kruskal")
+  fmt.Println(algo.Kruskal(al))
+  fmt.Println(algo.Kruskal(im))
+  fmt.Println()
 }

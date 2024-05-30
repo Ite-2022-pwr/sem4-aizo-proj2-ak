@@ -1,6 +1,7 @@
-package graph
+package algo
 
 import (
+	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/utils"
 )
 
@@ -47,23 +48,15 @@ func (uf *UnionFind) Union(u, v int) bool {
   return true
 }
 
-func CompareEdges(e1, e2 Edge) int {
-  if e1.Weight > e2.Weight {
-    return 1
-  } else if e1.Weight < e2.Weight {
-    return -1
-  }
-  return 0
-}
 
-func Kruskal(G Graph) (mstWeight int, mstEdges []Edge) {
+func Kruskal(G graph.Graph) (mstWeight int, mstEdges []graph.Edge) {
   mstWeight = 0
 
   edges := G.GetEdges()
   uf := NewUnionFind(G.GetVerticesNumber())
   edgeCount := 0
 
-  utils.HeapSort(edges, CompareEdges)
+  utils.HeapSort(edges, graph.CompareEdges)
 
   for _, edge := range edges {
     if uf.Union(edge.Source, edge.Destination) {

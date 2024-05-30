@@ -1,8 +1,10 @@
-package graph
+package algo
 
 import (
 	"fmt"
 	"math"
+
+	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
 func minDistance(distances []int, visited []bool) int {
@@ -19,7 +21,7 @@ func minDistance(distances []int, visited []bool) int {
   return minDistanceVertex
 }
 
-func Dijkstra(G Graph, startVertex int) (distances []int, parents []int, err error) {
+func Dijkstra(G graph.Graph, startVertex int) (distances []int, parents []int, err error) {
   if startVertex < 0 || startVertex >= G.GetVerticesNumber() {
     return nil, nil, fmt.Errorf("Invalid start vertex number: %v", startVertex)
   }
