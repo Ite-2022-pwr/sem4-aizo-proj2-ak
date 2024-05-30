@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/algo"
+	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/analysis"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/generator"
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
@@ -126,4 +127,21 @@ func main() {
   fmt.Println(algo.Kruskal(al))
   fmt.Println(algo.Kruskal(im))
   fmt.Println()
+
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+  fmt.Println()
+  
+  graphAnal, err := analysis.NewGraphAnalyzer(V, edges)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+  graphAnal.Dijstkra(0, V - 1)
+  graphAnal.BellmanFord(0, V - 1)
 }

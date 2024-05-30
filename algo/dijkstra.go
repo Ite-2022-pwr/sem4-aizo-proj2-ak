@@ -7,6 +7,24 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
+func FindPathString(parents []int, begin, end int) (string, error) {
+  if begin < 0 || begin > len(parents) - 1 {
+    return "", fmt.Errorf("Invalid begin: %v", begin)
+  }
+  if end < 0 || end > len(parents) - 1 {
+    return "", fmt.Errorf("Invalid end: %v", end)
+  }
+
+  ret := fmt.Sprintf("-> %v", end)
+  v := end
+  for v != begin {
+    v = parents[v]
+    ret = fmt.Sprintf("-> %v ", v) + ret
+  }
+
+  return ret, nil
+}
+
 func minDistance(distances []int, visited []bool) int {
   verticesNumber := len(visited)
   var minDistanceVertex int
