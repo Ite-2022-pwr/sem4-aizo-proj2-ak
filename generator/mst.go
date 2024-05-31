@@ -7,7 +7,7 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
-func GenerateMst(numberOfVertices, maxWeight int) (mst []graph.Edge, adjacencyMatrix [][]int, err error) {
+func GenerateMst(numberOfVertices, maxWeight int, directed bool) (mst []graph.Edge, adjacencyMatrix [][]int, err error) {
   if numberOfVertices <= 0 {
     return nil, nil, fmt.Errorf("Number of vertices must be positive, given: %v", numberOfVertices)
   }
@@ -29,7 +29,10 @@ func GenerateMst(numberOfVertices, maxWeight int) (mst []graph.Edge, adjacencyMa
     weight := rand.Intn(maxWeight) + 1
 
     mst[src] = graph.Edge{Source: src, Destination: dest, Weight: weight}
-    adjacencyMatrix[src][dest], adjacencyMatrix[dest][src] = weight, weight
+    adjacencyMatrix[src][dest] = weight
+    if !directed {
+      adjacencyMatrix[dest][src] = weight
+    }
   }
 
   return mst, adjacencyMatrix, nil
