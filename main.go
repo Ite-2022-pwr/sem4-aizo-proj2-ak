@@ -6,5 +6,6 @@ func main() {
 
   // benchmark.BenchmarkDijsktra()
   // benchmark.BenchmarkBellmanFord()
-  benchmark.BenchmarkKruskal()
+  // benchmark.BenchmarkKruskal()
+  benchmark.BenchmarkPrim()
 }

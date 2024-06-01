@@ -16,7 +16,7 @@ func BenchmarkKruskal() {
     var outputList, outputMatrix [][]string
     for _, verticiesNum := range VerticiesNumbers {
       listTimeAvg, matrixTimeAvg := 0.0, 0.0
-      graphAnals, err := generator.GenerateGraphSet(NumberOfGraphs, verticiesNum, verticiesNum / 10, density, true)
+      graphAnals, err := generator.GenerateGraphSet(NumberOfGraphs, verticiesNum, verticiesNum / 10, density, false)
       if err != nil {
         return
       }
