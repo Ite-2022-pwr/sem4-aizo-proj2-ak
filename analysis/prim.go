@@ -9,7 +9,7 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/utils"
 )
 
-func (ga *GraphAnalyzer) Prim() (listTime, matrixTime float64) {
+func (ga *GraphAnalyzer) Prim(printMstEdges bool) (listTime, matrixTime float64) {
   prompt := utils.BlueColor("Znajdowanie minimalnego drzewa rozpinającego algorytmem Prima dla listy sąsiedztwa")
   log.Println("[*] Rozpoczynanie:", prompt)
   start := time.Now()
@@ -25,9 +25,11 @@ func (ga *GraphAnalyzer) Prim() (listTime, matrixTime float64) {
 
   log.Println(utils.YellowColor(fmt.Sprintf("[+] Waga minimalnego drzewa rozpinającego: %v", mstWeight)))
 
-  log.Print(utils.YellowColor(fmt.Sprintf("[+] Krawędzie minimalnego drzewa rozpinajacego")))
-  for _, e := range mstEdges {
-    fmt.Printf("%v -> %v: %v\n", e.Source, e.Destination, e.Weight)
+  if printMstEdges {
+    log.Print(utils.YellowColor(fmt.Sprintf("[+] Krawędzie minimalnego drzewa rozpinajacego")))
+    for _, e := range mstEdges {
+      fmt.Printf("%v -> %v: %v\n", e.Source, e.Destination, e.Weight)
+    }
   }
 
   prompt = utils.BlueColor("Znajdowanie minimalnego drzewa rozpinającego algorytmem Prima dla macierzy incydencji")
@@ -45,9 +47,11 @@ func (ga *GraphAnalyzer) Prim() (listTime, matrixTime float64) {
 
   log.Println(utils.YellowColor(fmt.Sprintf("[+] Waga minimalnego drzewa rozpinającego: %v", mstWeight)))
 
-  log.Print(utils.YellowColor(fmt.Sprintf("[+] Krawędzie minimalnego drzewa rozpinajacego")))
-  for _, e := range mstEdges {
-    fmt.Printf("%v -> %v: %v\n", e.Source, e.Destination, e.Weight)
+  if printMstEdges {
+    log.Print(utils.YellowColor(fmt.Sprintf("[+] Krawędzie minimalnego drzewa rozpinajacego")))
+    for _, e := range mstEdges {
+      fmt.Printf("%v -> %v: %v\n", e.Source, e.Destination, e.Weight)
+    }
   }
 
   return listTime, matrixTime
