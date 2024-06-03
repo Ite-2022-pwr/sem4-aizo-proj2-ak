@@ -7,6 +7,8 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
+// BellmanFord znajduje najkrótsze ścieżki od podanego wierchołka do wszystkich pozostałych wierchołków
+// w grafie za pomocą algorytmu Forda-Bellmana
 func BellmanFord(G graph.Graph, startVertex int) (distances []int, parents []int, err error) {
   if startVertex < 0 || startVertex >= G.GetVerticesNumber() {
     return nil, nil, fmt.Errorf("Invalid start vertex number: %v", startVertex)
@@ -29,6 +31,7 @@ func BellmanFord(G graph.Graph, startVertex int) (distances []int, parents []int
       edge := edges[e]
       u, v := edge.Source, edge.Destination
 
+      // relaksacja krawędzi
       if distances[u] + edge.Weight < distances[v] {
         distances[v] = distances[u] + edge.Weight
         parents[v] = u

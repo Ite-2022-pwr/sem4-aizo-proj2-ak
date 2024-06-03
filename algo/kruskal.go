@@ -5,11 +5,13 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/utils"
 )
 
+// UnionFind reprezentuje rozłączne potrzebne do działania algorytmu Kruskala
 type UnionFind struct {
   Parents []int
   Sizes   []int
 }
 
+// NewUnionFind zwraca nowy UnionFind
 func NewUnionFind(numberOfVertices int) *UnionFind {
   parents := make([]int, numberOfVertices)
   sizes := make([]int, numberOfVertices)
@@ -30,6 +32,7 @@ func (uf *UnionFind) Find(v int) int {
   return v
 }
 
+// Union łączy zbiory dla dwóch różnych wierzchołków
 func (uf *UnionFind) Union(u, v int) bool {
   rootU, rootV := uf.Find(u), uf.Find(v)
 
@@ -48,7 +51,7 @@ func (uf *UnionFind) Union(u, v int) bool {
   return true
 }
 
-
+// Kruskal znajduje minimalne drzewo rozpinające w grafie algorytmem Kruskala
 func Kruskal(G graph.Graph) (mstWeight int, mstEdges []graph.Edge) {
   mstWeight = 0
 

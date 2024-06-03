@@ -19,6 +19,7 @@ func findMinKey(keys []int, mstSet []bool) int {
   return minKeyIdx
 }
 
+// Prim znajduje minimalne drzewo rozpinające w grafie algorytmem Prima
 func Prim(G graph.Graph) (mstWeight int, mstEdges []graph.Edge, err error) {
 
   parents := make([]int, G.GetVerticesNumber())

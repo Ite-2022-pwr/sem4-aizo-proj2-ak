@@ -7,6 +7,8 @@ import (
 	"github.com/Ite-2022-pwr/sem4-aizo-proj2-ak/graph"
 )
 
+// FindPathString znajduje dokładną ścieżkę od jednego wierzchołka do drugiego
+// na podstawie tablicy parents
 func FindPathString(parents []int, begin, end int) (string, error) {
   if begin < 0 || begin > len(parents) - 1 {
     return "", fmt.Errorf("Invalid begin: %v", begin)
@@ -39,6 +41,8 @@ func minDistance(distances []int, visited []bool) int {
   return minDistanceVertex
 }
 
+// Dijkstra znajduje najkrótsze ścieżki z podanego wierzchołka do wszystkich pozostałych
+// za pomocą naiwnej implementacji algorytmu Dijkstry
 func Dijkstra(G graph.Graph, startVertex int) (distances []int, parents []int, err error) {
   if startVertex < 0 || startVertex >= G.GetVerticesNumber() {
     return nil, nil, fmt.Errorf("Invalid start vertex number: %v", startVertex)
@@ -73,6 +77,7 @@ func Dijkstra(G graph.Graph, startVertex int) (distances []int, parents []int, e
         continue
       }
 
+      // relaksacja krawędzi
       if distances[u] + edge.Weight < distances[v] {
         distances[v] = distances[u] + edge.Weight
         parents[v] = u
