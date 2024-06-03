@@ -32,9 +32,11 @@ func NewGraphAnalyzer(numberOfVertices int, edges []graph.Edge) (ga *GraphAnalyz
 }
 
 func (ga *GraphAnalyzer) PrintAdjacencyList() {
+  fmt.Println("Lista sąsiedztwa:")
   fmt.Println(ga.List.ToString())
 }
 
 func (ga *GraphAnalyzer) PrintIncidenceMatrix() {
+  fmt.Println("Macierz incydencji:")
   fmt.Println(ga.Matrix.ToString())
 }
